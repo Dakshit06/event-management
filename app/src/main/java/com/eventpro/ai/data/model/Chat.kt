@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class ChatMessage(
@@ -14,7 +15,7 @@ data class ChatMessage(
     val message: String = "",
     val type: MessageType = MessageType.TEXT,
     val mediaUrl: String = "",
-    val timestamp: Timestamp = Timestamp.now(),
+    val timestamp: @RawValue Timestamp = Timestamp.now(),
     val isRead: Boolean = false,
     val eventId: String = ""
 ) : Parcelable
@@ -32,10 +33,10 @@ data class ChatRoom(
     val id: String = "",
     val participants: List<String> = emptyList(),
     val lastMessage: String = "",
-    val lastMessageTime: Timestamp = Timestamp.now(),
+    val lastMessageTime: @RawValue Timestamp = Timestamp.now(),
     val unreadCount: Map<String, Int> = emptyMap(),
     val eventId: String = "",
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 @Parcelize
@@ -47,7 +48,7 @@ data class NetworkingMatch(
     val matchReasons: List<String> = emptyList(),
     val status: MatchStatus = MatchStatus.SUGGESTED,
     val eventId: String = "",
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class MatchStatus {

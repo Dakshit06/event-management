@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class AIRecommendation(
@@ -18,7 +19,7 @@ data class AIRecommendation(
     val imageUrl: String = "",
     val viewed: Boolean = false,
     val interacted: Boolean = false,
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class RecommendationType {
@@ -38,8 +39,8 @@ data class SentimentAnalysis(
     val score: Float = 0f,
     val topics: List<String> = emptyList(),
     val keywords: List<String> = emptyList(),
-    val timestamp: Timestamp = Timestamp.now(),
-    val aggregatedData: Map<String, Any> = emptyMap()
+    val timestamp: @RawValue Timestamp = Timestamp.now(),
+    val aggregatedData: @RawValue Map<String, Any> = emptyMap()
 ) : Parcelable
 
 enum class Sentiment {
@@ -55,10 +56,10 @@ data class PredictiveAnalytics(
     val eventId: String = "",
     val predictedAttendance: Int = 0,
     val confidenceScore: Float = 0f,
-    val sessionPopularity: Map<String, Float> = emptyMap(),
+    val sessionPopularity: @RawValue Map<String, Float> = emptyMap(),
     val peakTimes: List<String> = emptyList(),
     val resourceNeeds: ResourcePrediction = ResourcePrediction(),
-    val generatedAt: Timestamp = Timestamp.now()
+    val generatedAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 @Parcelize
@@ -73,7 +74,7 @@ data class ResourcePrediction(
 data class CrowdHeatmap(
     val id: String = "",
     val eventId: String = "",
-    val locations: Map<String, Int> = emptyMap(), // location -> crowd count
-    val timestamp: Timestamp = Timestamp.now(),
+    val locations: @RawValue Map<String, Int> = emptyMap(), // location -> crowd count
+    val timestamp: @RawValue Timestamp = Timestamp.now(),
     val hotspots: List<String> = emptyList()
 ) : Parcelable

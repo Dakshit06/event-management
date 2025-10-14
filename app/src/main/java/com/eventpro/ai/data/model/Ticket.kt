@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Ticket(
@@ -13,12 +14,12 @@ data class Ticket(
     val userEmail: String = "",
     val ticketType: TicketType = TicketType(),
     val qrCode: String = "",
-    val purchaseDate: Timestamp = Timestamp.now(),
+    val purchaseDate: @RawValue Timestamp = Timestamp.now(),
     val status: TicketStatus = TicketStatus.ACTIVE,
     val checkInTime: Timestamp? = null,
     val sessionIds: List<String> = emptyList(), // Sessions registered for
     val transactionId: String = "",
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 @Parcelize
@@ -31,8 +32,8 @@ data class TicketType(
     val quantity: Int = 0,
     val available: Int = 0,
     val perks: List<String> = emptyList(),
-    val validFrom: Timestamp = Timestamp.now(),
-    val validUntil: Timestamp = Timestamp.now()
+    val validFrom: @RawValue Timestamp = Timestamp.now(),
+    val validUntil: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class TicketStatus {

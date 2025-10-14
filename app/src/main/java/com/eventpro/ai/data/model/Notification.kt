@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Notification(
@@ -16,7 +17,7 @@ data class Notification(
     val isRead: Boolean = false,
     val actionUrl: String = "",
     val imageUrl: String = "",
-    val timestamp: Timestamp = Timestamp.now()
+    val timestamp: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class NotificationType {

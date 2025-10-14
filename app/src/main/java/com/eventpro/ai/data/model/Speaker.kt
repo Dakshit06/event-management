@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Speaker(
@@ -19,7 +20,7 @@ data class Speaker(
     val expertise: List<String> = emptyList(),
     val sessionIds: List<String> = emptyList(),
     val eventIds: List<String> = emptyList(),
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 @Parcelize
@@ -36,7 +37,7 @@ data class Sponsor(
     val eventIds: List<String> = emptyList(),
     val packageFeatures: List<String> = emptyList(),
     val leadCount: Int = 0,
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class SponsorTier {

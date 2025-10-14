@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Event(
@@ -15,9 +16,9 @@ data class Event(
     val imageUrl: String = "",
     val bannerUrl: String = "",
     val venue: Venue = Venue(),
-    val startDate: Timestamp = Timestamp.now(),
-    val endDate: Timestamp = Timestamp.now(),
-    val registrationDeadline: Timestamp = Timestamp.now(),
+    val startDate: @RawValue Timestamp = Timestamp.now(),
+    val endDate: @RawValue Timestamp = Timestamp.now(),
+    val registrationDeadline: @RawValue Timestamp = Timestamp.now(),
     val capacity: Int = 0,
     val registeredCount: Int = 0,
     val tags: List<String> = emptyList(),
@@ -30,8 +31,8 @@ data class Event(
     val hashtag: String = "",
     val websiteUrl: String = "",
     val socialMediaLinks: Map<String, String> = emptyMap(),
-    val createdAt: Timestamp = Timestamp.now(),
-    val updatedAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now(),
+    val updatedAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 @Parcelize

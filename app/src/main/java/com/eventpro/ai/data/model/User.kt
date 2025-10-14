@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class User(
@@ -20,8 +21,8 @@ data class User(
     val location: String = "",
     val networkingGoals: String = "",
     val fcmToken: String = "",
-    val createdAt: Timestamp = Timestamp.now(),
-    val updatedAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now(),
+    val updatedAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class UserRole {

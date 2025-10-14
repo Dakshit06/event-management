@@ -3,6 +3,7 @@ package com.eventpro.ai.data.model
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Session(
@@ -14,8 +15,8 @@ data class Session(
     val type: SessionType = SessionType.TALK,
     val track: String = "",
     val room: String = "",
-    val startTime: Timestamp = Timestamp.now(),
-    val endTime: Timestamp = Timestamp.now(),
+    val startTime: @RawValue Timestamp = Timestamp.now(),
+    val endTime: @RawValue Timestamp = Timestamp.now(),
     val duration: Int = 60, // in minutes
     val capacity: Int = 0,
     val attendeeIds: List<String> = emptyList(),
@@ -28,7 +29,7 @@ data class Session(
     val resources: List<String> = emptyList(),
     val aiSummary: String = "",
     val keyTakeaways: List<String> = emptyList(),
-    val createdAt: Timestamp = Timestamp.now()
+    val createdAt: @RawValue Timestamp = Timestamp.now()
 ) : Parcelable
 
 enum class SessionType {
