@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EventPro AI</string>
+    <string name="default_notification_channel_id">general_notifications</string>
+    
+    <!-- Authentication -->
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="forgot_password">Forgot Password?</string>
+    
+    <!-- Events -->
+    <string name="discover_events">Discover Events</string>
+    <string name="my_events">My Events</string>
+    <string name="event_details">Event Details</string>
+    <string name="register">Register</string>
+    <string name="registered">Registered</string>
+    
+    <!-- Sessions -->
+    <string name="schedule">Schedule</string>
+    <string name="my_schedule">My Schedule</string>
+    <string name="add_to_schedule">Add to Schedule</string>
+    <string name="session_details">Session Details</string>
+    
+    <!-- Networking -->
+    <string name="networking">Networking</string>
+    <string name="matches">Matches</string>
+    <string name="connect">Connect</string>
+    <string name="message">Message</string>
+    <string name="chat">Chat</string>
+    
+    <!-- AI Features -->
+    <string name="ai_recommendations">AI Recommendations</string>
+    <string name="ai_picks">AI Picks</string>
+    <string name="ai_chatbot">AI Assistant</string>
+    <string name="personalized_for_you">Personalized For You</string>
+    
+    <!-- Profile -->
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_tickets">My Tickets</string>
+    <string name="settings">Settings</string>
+    
+    <!-- General -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="loading">Loading…</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="no_results">No results found</string>
+    
+    <!-- Tickets -->
+    <string name="ticket">Ticket</string>
+    <string name="qr_code">QR Code</string>
+    <string name="check_in">Check In</string>
+    
+    <!-- Venue -->
+    <string name="venue">Venue</string>
+    <string name="venue_map">Venue Map</string>
+    <string name="directions">Directions</string>
+    
+    <!-- Notifications -->
+    <string name="notifications">Notifications</string>
+    <string name="mark_as_read">Mark as Read</string>
+    
+    <!-- Errors -->
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_auth">Authentication error. Please sign in again.</string>
+</resources>
