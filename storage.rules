@@ -1,0 +1,162 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // ============================================
+    // Helper Functions
+    // ============================================
+    
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    function isValidImage() {
+      return request.resource.size < 5 * 1024 * 1024 // 5MB max
+             && request.resource.contentType.matches('image/.*');
+    }
+    
+    function isValidFile() {
+      return request.resource.size < 10 * 1024 * 1024; // 10MB max
+    }
+    
+    // ============================================
+    // Profile Images
+    // ============================================
+    match /profile_images/{userId}/{fileName} {
+      // Anyone can read profile images
+      allow read: if true;
+      
+      // Only the user can upload/update their own profile image
+      allow write: if isSignedIn() && 
+                      isOwner(userId) && 
+                      isValidImage();
+      
+      // Only the user can delete their own profile image
+      allow delete: if isOwner(userId);
+    }
+    
+    // ============================================
+    // Event Images
+    // ============================================
+    match /event_images/{eventId}/{fileName} {
+      // Anyone can read event images
+      allow read: if true;
+      
+      // Authenticated users can upload event images
+      allow write: if isSignedIn() && isValidImage();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // Event Banners
+    // ============================================
+    match /event_banners/{eventId}/{fileName} {
+      // Anyone can read event banners
+      allow read: if true;
+      
+      // Authenticated users can upload event banners
+      allow write: if isSignedIn() && isValidImage();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // Speaker Images
+    // ============================================
+    match /speaker_images/{speakerId}/{fileName} {
+      // Anyone can read speaker images
+      allow read: if true;
+      
+      // Authenticated users can upload speaker images
+      allow write: if isSignedIn() && isValidImage();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // Sponsor Logos
+    // ============================================
+    match /sponsor_logos/{sponsorId}/{fileName} {
+      // Anyone can read sponsor logos
+      allow read: if true;
+      
+      // Authenticated users can upload sponsor logos
+      allow write: if isSignedIn() && isValidImage();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // Venue Maps
+    // ============================================
+    match /venue_maps/{eventId}/{fileName} {
+      // Anyone can read venue maps
+      allow read: if true;
+      
+      // Authenticated users can upload venue maps
+      allow write: if isSignedIn() && isValidImage();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // Session Recordings
+    // ============================================
+    match /session_recordings/{sessionId}/{fileName} {
+      // Anyone can read session recordings
+      allow read: if true;
+      
+      // Authenticated users can upload recordings
+      allow write: if isSignedIn() && isValidFile();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // Chat Files
+    // ============================================
+    match /chat_files/{chatId}/{fileName} {
+      // Only authenticated users can read chat files
+      allow read: if isSignedIn();
+      
+      // Authenticated users can upload chat files
+      allow write: if isSignedIn() && isValidFile();
+      
+      // Authenticated users can delete
+      allow delete: if isSignedIn();
+    }
+    
+    // ============================================
+    // QR Codes
+    // ============================================
+    match /qr_codes/{ticketId}/{fileName} {
+      // Anyone can read QR codes (for scanning)
+      allow read: if true;
+      
+      // System can generate QR codes
+      allow write: if isSignedIn();
+      
+      // Don't allow deletion of QR codes
+      allow delete: if false;
+    }
+    
+    // ============================================
+    // Default Deny All
+    // ============================================
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
